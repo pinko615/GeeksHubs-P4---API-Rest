@@ -16,6 +16,32 @@ git clone https://github.com/pinko615/GeeksHubs-P4---BackendMovie.git
 
 ## Code Demo 🤓
 
+_Search by "?q=movieName"_
+```
+const { Op } = Sequelize;
+app.get('/movies/search', function (request, response) {
+    let filter = {};
+    let { q } = request.query;
+
+    if (q) {
+        filter = {
+            where: {
+                title: {
+                    [Op.like]: `${q}%`
+                }
+            }
+        };
+    }
+
+    Movie.findAll(filter)
+    .then(movies => response.send(movies))
+    .catch(err =>{
+        console.log(err)
+        res.status(500).send({message:'error'})
+    });
+});
+```
+
 _1 cinema = many movies._
 ```
   Cinema.associate = function(models) {
