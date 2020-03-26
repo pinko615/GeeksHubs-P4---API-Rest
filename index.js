@@ -17,7 +17,7 @@ app.use(express.json());
 // Peliculas
 app.get('/movies', (request,response) => {
     Movie.findAll({
-        include: [Actor]
+        include: [Actor,Cinema]
     })
     .then(movies => response.send(movies))
     .catch(err =>{
@@ -75,6 +75,24 @@ app.get('/actors', (req,res) => {
     });
 });
 
+// Actores // Busqueda por nombre
+app.get('/actors/search', function (request, response) {
+    let filter = {};
+    let { q } = request.query;
+    console.log('entro');
+    if (q) {
+        filter = {
+            where: {  titleMovie: {[Op.like]: `${q}%`}}
+        };
+    }
+    Actor.findAll(filter)
+    .then(actors => response.send(actors))
+    .catch(err =>{
+        console.log(err)
+        res.status(500).send({message:'Ha habido un problema al cargar los actores'})
+    });
+});
+
 // Actores // Filtro por ID
 app.get('/actors/:id', (request,response) => {
     let { id } = request.params;
@@ -89,17 +107,28 @@ app.get('/actors/:id', (request,response) => {
     });
 });
 
-// Cines
+// Cines // Busqueda x ?premiere=false / true
 app.get('/cinemas', (request,response) => {
-    Cinema.findAll()
+    if((request.query.premiere)){
+        const premiere = request.query.premiere;
+        Cinema.findAll({ where: { premiere: premiere }}).then( cines => {
+            response.json((cines));
+        });
+    }
+    else
+    {   
+    Cinema.findAll({
+        include: [Movie]
+    })
     .then(cinemas => response.send(cinemas))
     .catch(err =>{
         console.log(err)
         response.status(500).send({message:'Ha habido un problema al cargar las pelicula'})
     });
-});
+}
+})
 
-// Cines // Busqueda a traves de /search?q=
+// Cines // Busqueda x nombre a traves de /search?q=
 app.get('/cinemas/search', function (request, response) {
     let filter = {};
     let { q } = request.query;
@@ -122,15 +151,26 @@ app.get('/cinemas/search', function (request, response) {
     });
 });
 
-// Cines // Filtro por ID
-app.get('/cinemas/:id', (request,response) => {
-    let { id } = request.params;
-    
-    Cinema.findByPk(id)
+// Cines // Busqueda x provincia a traves de /search?q=
+app.get('/cinemas/province', function (request, response) {
+    let filter = {};
+    let { q } = request.query;
+
+    if (q) {
+        filter = {
+            where: {
+                province: {
+                    [Op.like]: `${q}%`
+                }
+            }
+        };
+    }
+
+    Cinema.findAll(filter)
     .then(cinemas => response.send(cinemas))
     .catch(err =>{
         console.log(err)
-        response.status(500).send({message:'Ha habido un problema al cargar las pelicula'})
+        res.status(500).send({message:'Ha habido un problema al cargar las pelicula'})
     });
 });
 

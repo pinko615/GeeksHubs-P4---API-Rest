@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   
   Movie.associate = function(models) {
     Movie.hasMany(models.Actor)
-    Movie.hasMany(models.Cinema)
+    Movie.belongsTo(models.Cinema)
   };
   return Movie;
 };
