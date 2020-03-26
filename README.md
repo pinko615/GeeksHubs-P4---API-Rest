@@ -13,12 +13,12 @@ _v1.0_
 
 ## Developed with 🛠️
 
-* [HTML5]
-* [CSS]
 * [JavaScript]
-* [Boostrap] https://getbootstrap.com/
-* [API] https://www.themoviedb.org/
-* [GitHub] https://github.com/pinko615
+* [Express]
+* [Node]
+* [Sequelize-cli]
+* [SQL]
+* [Postman]
 
 ## Author ✒️
 
