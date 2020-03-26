@@ -1,10 +1,11 @@
-# YouMovie Database
-
-_YouMovie provides a simple and easy to use interface to find movies with their info (title, poster path, genre and rating. This website takes the info from themoviedb.org API._
+# BackendMovie
 
 ## Firsts steps 🚀
 
 _You can download or clone this project to see the code of the entire website._
+```
+git clone https://github.com/pinko615/GeeksHubs-P4---BackendMovie.git
+```
 
 ## Version 🖥
 
