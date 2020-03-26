@@ -7,16 +7,32 @@ _You can download or clone this project to see the code of the entire website._
 git clone https://github.com/pinko615/GeeksHubs-P4---BackendMovie.git
 ```
 
+## Version 🖥
+
+_v1.0_
+
+## Developed with 🛠️
+
+* [JavaScript]
+* [Express]
+* [Node]
+* [Sequelize-cli]
+* [SQL]
+* [Postman]
+
 ## Settings ⚙️
 
-_You can download or clone this project to see the code of the entire website._
+_To download and install all the dependencies you have to run the following commands._
 ```
-git clone https://github.com/pinko615/GeeksHubs-P4---BackendMovie.git
+npm init
+```
+```
+npm install
 ```
 
 ## Code Demo 🤓
 
-_Search by "?q=movieName"_
+_Search by "?q=movieTitle"_
 ```
 const { Op } = Sequelize;
 app.get('/movies/search', function (request, response) {
@@ -48,19 +64,6 @@ _1 cinema = many movies._
     Cinema.hasMany(models.Movie)
   };
 ```
-
-## Version 🖥
-
-_v1.0_
-
-## Developed with 🛠️
-
-* [JavaScript]
-* [Express]
-* [Node]
-* [Sequelize-cli]
-* [SQL]
-* [Postman]
 
 ## Author ✒️
 
