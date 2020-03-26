@@ -7,6 +7,13 @@ _You can download or clone this project to see the code of the entire website._
 git clone https://github.com/pinko615/GeeksHubs-P4---BackendMovie.git
 ```
 
+## Settings ⚙️
+
+_You can download or clone this project to see the code of the entire website._
+```
+git clone https://github.com/pinko615/GeeksHubs-P4---BackendMovie.git
+```
+
 ## Version 🖥
 
 _v1.0_
